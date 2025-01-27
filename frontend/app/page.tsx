@@ -36,7 +36,7 @@ export default function SearchPage() {
   };
   // Add random handler
   const handleRandom = async () => {
-    const res = await fetch(`${baseApi}/api/random-repo`);
+    const res = await fetch(`${baseApi}/random-repo`);
     const repo: Repo = await res.json();
     window.open(`https://github.com${repo.repo_url}`, '_blank');
   };

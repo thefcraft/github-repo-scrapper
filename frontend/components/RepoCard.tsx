@@ -1,7 +1,7 @@
-// RepoCard.tsx
+"use client";
+
 import StarIcon from '@mui/icons-material/Star';
 import CodeIcon from '@mui/icons-material/Code';
-import Link from 'next/link';
 import { Repo } from '@/lib/types';
 
 export default function RepoCard({ repo }: { repo: Repo }) {
@@ -41,13 +41,13 @@ export default function RepoCard({ repo }: { repo: Repo }) {
           <p className="mt-2 text-gray-700">{repo.desc}</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {repo.tags.map(([tag]) => (
-              <Link
+              <a
                 key={tag}
-                href={`/tag/${tag}`}
+                href={`/tag?id=${tag}`}
                 className="px-2 py-1 bg-blue-100 rounded hover:bg-blue-200 text-sm transition-colors"
               >
                 #{tag}
-              </Link>
+              </a>
             ))}
           </div>
         </div>

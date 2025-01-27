@@ -1,10 +1,11 @@
 # main.py
-from fastapi import FastAPI, Query
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dataclasses import dataclass
 import json
 from typing import List, Optional, Tuple
-
+import os
+basepath = os.path.dirname(__file__)
 app = FastAPI()
 
 app.add_middleware(
@@ -34,7 +35,7 @@ class Repo:
 
 # Load data
 repos = []
-with open("repos.jsonl") as f:
+with open(os.path.join(basepath, "repos.jsonl")) as f:
     for line in f:
         data = json.loads(line)
         data["tags"] = [tuple(tag) for tag in data["tags"]]

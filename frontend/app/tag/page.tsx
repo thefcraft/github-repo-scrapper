@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';  // For query parameters
 import { Repo } from '@/lib/types';
 import RepoCard from '@/components/RepoCard';
 import { getTagRepos } from '@/lib/api';
@@ -9,7 +9,8 @@ import Link from 'next/link';
 
 export default function TagPage() {
   const [repos, setRepos] = useState<Repo[]>([]);
-  const { tagName }: {tagName?: string} = useParams();
+  const searchParams = useSearchParams();  // Get query parameters
+  const tagName: string | null = searchParams.get("id");
   useEffect(() => {
     if (tagName) {
       getTagRepos(tagName).then((res) => setRepos(res.repos));

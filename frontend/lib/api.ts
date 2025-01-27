@@ -1,6 +1,6 @@
 import { Repo } from "@/lib/types";
 
-export const baseApi = 'http://127.0.0.1:8000';
+export const baseApi = '/api';
 
 export interface ApiResponse {
   repos: Repo[];
@@ -23,20 +23,20 @@ export async function searchRepos(
   if (search) params.append("search", search);
   if (lang) params.append("lang", lang);
   tags.forEach((tag) => params.append("tag", tag));
-  const res = await fetch(`${baseApi}/api/repos?${params.toString()}`);
+  const res = await fetch(`${baseApi}/repos?${params.toString()}`);
   return res.json();
 }
 
 export async function getTags(query: string): Promise<ApiResponse> {
-  const res = await fetch(`${baseApi}/api/tags?q=${query}`);
+  const res = await fetch(`${baseApi}/tags?q=${query}`);
   return res.json();
 }
 export async function getLanguages(): Promise<ApiResponse> {
-  const res = await fetch(`${baseApi}/api/langs`);
+  const res = await fetch(`${baseApi}/langs`);
   return res.json();
 }
 
 export async function getTagRepos(tagName: string): Promise<ApiResponse> {
-  const res = await fetch(`${baseApi}/api/tag/${tagName}`);
+  const res = await fetch(`${baseApi}/tag/${tagName}`);
   return res.json();
 }

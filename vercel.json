@@ -1,0 +1,39 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "main.py",
+            "use": "@vercel/python"
+        },
+        {
+            "src": "frontend/out/**/*",     
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "main.py"
+        },
+        {
+            "src": "/tag",
+            "dest": "frontend/out/tag/index.html"
+        },
+        {
+            "src": "/tag/(.*)",
+            "dest": "frontend/out/tag/$1"
+        },
+        {
+            "src": "/_next/(.*)",
+            "dest": "frontend/out/_next/$1"
+        },
+        {
+            "src": "/",
+            "dest": "frontend/out/index.html"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "frontend/out/$1"
+        }
+    ]
+}
