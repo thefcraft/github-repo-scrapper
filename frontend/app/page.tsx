@@ -42,7 +42,7 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="p-4">
+    <div className="px-2 sm:px-4">
       <div className="flex justify-between mb-4">
         <h1 className="text-2xl font-bold">Open Source Explorer</h1>
         <Button 
